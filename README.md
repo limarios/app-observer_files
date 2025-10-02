@@ -116,7 +116,7 @@ Certifique-se de que o script tenha permissões suficientes para ler a pasta de 
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob a [MIT License](https://github.com/limarios/app-observer_files/blob/main/LICENSE)
 
 
 ## 🤝 Contribuições
