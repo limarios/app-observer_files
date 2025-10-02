@@ -2,7 +2,6 @@
 
 Este é um utilitário Python com interface gráfica (GUI) que monitora uma pasta em tempo real e copia automaticamente arquivos novos para uma pasta de destino. Ideal para automatizar cópias de arquivos de entrada em sistemas que precisam receber arquivos de uma origem comum.
 
-<br>
 
 ## 🚀 Funcionalidades
 
@@ -18,7 +17,6 @@ Este é um utilitário Python com interface gráfica (GUI) que monitora uma past
 
 - ✅ Compatível com Windows, Linux e macOS.
 
-<br>
 
 
 ## 🧰 Tecnologias Utilizadas
@@ -35,7 +33,6 @@ Este é um utilitário Python com interface gráfica (GUI) que monitora uma past
 
 - ``threading, os, time`` – Utilitários do sistema e execução em paralelo.
 
-<br>
 
 
 ## 📦 Instalação
@@ -58,7 +55,6 @@ venv\Scripts\activate     # Windows
 pip install watchdog pystray pillow
 ```
 
-<br>
 
 ## ▶️ Como Usar
 
@@ -88,7 +84,6 @@ pip install watchdog pystray pillow
 
 4. Para encerrar, clique com o botão direito no ícone da bandeja e selecione "Sair".
 
-<br>
 
 
 ## 📝 Observações
@@ -99,14 +94,12 @@ pip install watchdog pystray pillow
 
 - O programa não exclui ou move os arquivos originais, apenas faz uma cópia.
 
-<br>
 
 
 ## 🔒 Permissões
 
 Certifique-se de que o script tenha permissões suficientes para ler a pasta de origem e escrever na pasta de destino.
 
-<br>
 
 
 ## 🛠️ Possíveis Melhorias Futuras
@@ -119,14 +112,11 @@ Certifique-se de que o script tenha permissões suficientes para ler a pasta de 
 
 - Configuração de filtros (por extensão, tamanho, etc).
 
-<br>
 
 
 ## 📄 Licença
 
 Este projeto está licenciado sob a MIT License.
-
-<br>
 
 
 ## 🤝 Contribuições
