@@ -32,6 +32,31 @@ class FileCopyHandler(FileSystemEventHandler):
             except Exception as e:
                 print(f"Erro ao copiar arquivo: {e}")
 
+def buscar_arquivo_config():
+    """Retorna o caminho absoluto para um recurso que está na mesma pasta do executável"""
+    app_data_path = os.environ.get('APPDATA', os.path.expanduser('~'))
+    app_folder = os.path.join(app_data_path, 'MonitorCopias')
+    os.makedirs(app_folder, exist_ok=True)
+    return os.path.join(app_folder, 'config.txt')
+
+def recuperar_configuracoes():
+    """Verifica se pastas foram selecionadas anteriormente"""
+    global watch_folder
+    global destination_folder
+
+    config_path = buscar_arquivo_config()
+    
+    # Carregar configurações salvas (se existirem)
+    if os.path.exists(config_path):
+        with open(config_path, "r") as f:
+            lines = f.readlines()
+            if len(lines) >= 2:
+                watch_folder = lines[0].strip()
+                destination_folder = lines[1].strip()
+                messagebox.showinfo("Monitor de Cópia", "Configurações recuperadas!")
+                iniciar_monitoramento()
+                return
+
 def selecionar_pasta_origem():
     """Abre uma caixa de diálogo para selecionar a pasta de origem"""
     global watch_folder
@@ -45,12 +70,15 @@ def selecionar_pasta_destino():
 def iniciar_monitoramento():
     """Inicia o monitoramento das pastas"""
     global observer
+
+    config_path = buscar_arquivo_config()
+
     if not watch_folder or not destination_folder:
         messagebox.showwarning("Atenção", "Selecione ambas as pastas antes de iniciar.")
         return
 
     # Salvar configurações
-    with open("config.txt", "w") as f:
+    with open(config_path, "w") as f:
         f.write(f"{watch_folder}\n{destination_folder}")
 
     # Iniciar o monitoramento em uma thread separada
@@ -94,13 +122,7 @@ tk.Button(root, text="Selecionar Pasta", command=selecionar_pasta_destino).pack(
 
 tk.Button(root, text="Iniciar Monitoramento", command=iniciar_monitoramento).pack(pady=20)
 
-# Carregar configurações salvas (se existirem)
-if os.path.exists("config.txt"):
-    with open("config.txt", "r") as f:
-        lines = f.readlines()
-        if len(lines) >= 2:
-            watch_folder = lines[0].strip()
-            destination_folder = lines[1].strip()
+recuperar_configuracoes()
 
 # Rodar interface
 root.mainloop()

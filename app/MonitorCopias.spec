@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['main.py'],
+    ['app\\monitor_copy.py'],
     pathex=[],
     binaries=[],
     datas=[],
